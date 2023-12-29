@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Row Form</title>
+</head>
+<body>
+    <h1>Multi-Row Form</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {% for row in form.rows %}
+        <div>
+            {{ row.name.label }}: {{ row.name }}
+            {{ row.url.label }}: {{ row.url }}
+        </div>
+        {% endfor %}
+        {{ form.submit }}
+    </form>
+</body>
+</html>

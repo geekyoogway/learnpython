@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Search</title>
+</head>
+<body>
+    <h1>Data Search</h1>
+    <form method="POST" action="{{ url_for('/') }}">
+        {{ form.csrf_token }}
+        {{ form.search_query.label }} {{ form.search_query() }}
+        {{ form.submit() }}
+    </form>
+    
+    <h2>Search Results</h2>
+    <table>
+        <tr>
+            {% for column in dataframe.columns %}
+                <th>{{ column }}</th>
+            {% endfor %}
+        </tr>
+        {% for row in dataframe.iterrows() %}
+            <tr>
+                {% for value in row[1] %}
+                    <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
